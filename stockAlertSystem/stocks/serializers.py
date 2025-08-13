@@ -9,7 +9,7 @@ class StockPriceSerializer(serializers.ModelSerializer):
 
 class StockSerializer(serializers.ModelSerializer):
     price_history = StockPriceSerializer(many=True, read_only=True)
-    current_price = serializers.DecimalField(source='price', max_digits=10, decimal_places=6, read_only=True)
+    current_price = serializers.DecimalField(source='price', max_digits=10, decimal_places=2, read_only=True)
     
     class Meta:
         model = Stock
