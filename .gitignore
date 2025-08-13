@@ -1,0 +1,18 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Python byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
