@@ -115,8 +115,8 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'HS256',
@@ -133,8 +133,8 @@ APSCHEDULER_JOB_DEFAULTS = {
 }
 
 # STOCK ALERT SYSTEM SETTINGS
-STOCK_UPDATE_INTERVAL = 5  # minutes
-ALERT_CHECK_INTERVAL = 2   # minutes
+STOCK_UPDATE_INTERVAL = 2  # minutes
+ALERT_CHECK_INTERVAL = 4   # minutes
 MARKET_HOURS_UPDATE_INTERVAL = 3  # minutes during market hours
 
 # Email Configuration

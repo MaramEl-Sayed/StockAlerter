@@ -45,7 +45,6 @@ def check_all_alerts():
                 # Check duration alerts
                 elif alert.alert_type == 'duration':
                     # For duration alerts, we need to check if the condition has been met for the specified duration
-                    # This is a simplified implementation - you might want to enhance this
                     if alert.condition == 'below' and current_price < alert.target_price:
                         # Check if price has been below threshold for the required duration
                         duration_met = check_duration_condition(alert, current_price)
@@ -172,15 +171,13 @@ def send_alert_notification(alert, alert_history):
         # Prepare notification data
         subject = f"Stock Alert: {alert.stock.symbol} {alert.condition} {alert.target_price}"
         message = f"""
-Your stock alert has been triggered!
+        Your stock alert has been triggered
 
-Stock: {alert.stock.symbol}
-Condition: {alert.condition} ${alert.target_price}
-Current Price: ${alert_history.stock_price}
-Triggered At: {alert_history.triggered_at}
-Reason: {alert_history.message}
-
-You can view your alerts at: /api/alerts/
+        Stock: {alert.stock.symbol}
+        Condition: {alert.condition} ${alert.target_price}
+        Current Price: ${alert_history.stock_price}
+        Triggered At: {alert_history.triggered_at}
+        Reason: {alert_history.message}
         """
         
         # Send email notification directly (no Celery)

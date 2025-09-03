@@ -168,19 +168,19 @@ def format_alert_email(alert, stock_price, template_name='stock_alert'):
     # Default template if no custom template exists
     subject = f"Stock Alert: {alert.stock.symbol} {alert.condition} ${alert.target_price}"
     message = f"""
-Hello {alert.user.username},
+    Hello {alert.user.username},
 
-Your stock alert has been triggered!
+    Your stock alert has been triggered
 
-Stock: {alert.stock.symbol}
-Current Price: ${stock_price}
-Alert Condition: {alert.condition} ${alert.target_price}
-Alert Type: {alert.alert_type}
+    Stock: {alert.stock.symbol}
+    Current Price: ${stock_price}
+    Alert Condition: {alert.condition} ${alert.target_price}
+    Alert Type: {alert.alert_type}
 
-This alert was set to notify you when {alert.stock.symbol} goes {alert.condition} ${alert.target_price}.
+    This alert was set to notify you when {alert.stock.symbol} goes {alert.condition} ${alert.target_price}.
 
-Best regards,
-Stock Alert System
+    Best regards,
+    Stock Alert System
     """.strip()
     
     return subject, message

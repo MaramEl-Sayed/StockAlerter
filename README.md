@@ -130,7 +130,7 @@ GET  /api/accounts/profile/   # User profile (authenticated)
 
 ### Alerts
 ```
-GET    /api/alerts/alerts/           # List user alerts
+GET    localhost/api/alerts/alerts/           # List user alerts
 POST   /api/alerts/alerts/           # Create new alert
 GET    /api/alerts/alerts/{id}/      # Get specific alert
 PUT    /api/alerts/alerts/{id}/      # Update alert

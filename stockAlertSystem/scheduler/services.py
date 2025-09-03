@@ -35,43 +35,29 @@ class StockScheduler:
     def setup_jobs(self):
         """Setup all scheduled jobs for the stock system"""
         
-        # Update stock prices every 5 minutes
+        # Update stock prices every 2 minutes
         self.scheduler.add_job(
             self.update_stock_prices,
-            IntervalTrigger(minutes=5),
+            IntervalTrigger(minutes=2),
             id='update_stock_prices',
             name='Update Stock Prices',
-            max_instances=1,
-            replace_existing=True,
-            misfire_grace_time=300  # 5 minutes grace period
-        )
-        
-        # Check alerts every 2 minutes
-        self.scheduler.add_job(
-            self.check_alerts,
-            IntervalTrigger(minutes=2),
-            id='check_alerts',
-            name='Check Alerts',
             max_instances=1,
             replace_existing=True,
             misfire_grace_time=120  # 2 minutes grace period
         )
         
-        # Market hours update (9:30 AM - 4:00 PM EST, weekdays only)
-        # More frequent updates during trading hours
+        # Check alerts every 4 minutes
         self.scheduler.add_job(
-            self.market_hours_update,
-            CronTrigger(
-                hour='9-16', 
-                minute='*/3',  # Every 3 minutes during market hours
-                day_of_week='mon-fri',
-                timezone='US/Eastern'
-            ),
-            id='market_hours_update',
-            name='Market Hours Update',
+            self.check_alerts,
+            IntervalTrigger(minutes=4),
+            id='check_alerts',
+            name='Check Alerts',
             max_instances=1,
-            replace_existing=True
+            replace_existing=True,
+            misfire_grace_time=240  # 4 minutes grace period
         )
+        
+        
         
         # Daily cleanup job (midnight UTC)
         self.scheduler.add_job(
